@@ -1,0 +1,29 @@
+var cart = [];
+
+    $('.t706__cartwin-products').first().find('.t706__product').each(function(i, v) {
+    
+    var $v = $(v);  // для удобства
+    
+    var title = $v.find('.t706__product-title').text().trim();
+    var quantity = parseInt($v.find('.t706__product-plusminus .t706__product-quantity').text().trim());
+    var amount = parseInt($v.find('.t706__product-amount').text().trim().replace(' ', ''));
+
+    var price = amount / quantity;  // цена за ед. товара
+
+ cart.push({
+        name: 'Имя',
+        quantity: quantity,
+        amount: amount,
+        price: price,
+    });
+
+    });
+
+    
+vd.create({
+partnerCode: 'S0090321',
+partnerProductCode: 'Кредит',
+orderNum: 'order-' + new Date().getTime(),
+delivery: 1, 
+items: cart,
+})
